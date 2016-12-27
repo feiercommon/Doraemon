@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>哆唻A梦</title>
+</head>
+<style>
+    /**{*/
+        /*box-sizing:border-box;*/
+    /*}*/
+    .space{
+        width:500px;
+        height:700px;
+        left:0;top:0;right:0;bottom:0;
+        margin:50px auto;
+    }
+    .head{
+        position:relative;
+        left:0;top:0;right:0;bottom:0;
+        margin:0 auto;
+        width:314px;
+        height:304px;
+        background:linear-gradient(130deg,#0E92B6,#1AC3EB);
+        border-radius:48%;
+        border:2px solid #000;
+        box-shadow: -5px 10px 15px rgba(0,0,0,0.45);
+    }
+    .face{
+        position:absolute;
+        left:0;top:54px;right:0;bottom:0;
+        margin:auto;
+        background:#fff;
+        width:259px;height:219px;
+        border:2px solid #000;
+        border-radius:48%;
+        z-index:222;
+    }
+    .eye{
+        width:158px;
+        height:87px;
+        position:absolute;
+        left:0;top:0;right:0;bottom:0;
+        margin:-30px auto;
+        z-index:5;
+    }
+    .eye .lefteye{
+        position:relative;
+        width:76px;height:87px;
+        background:#fff;
+        border-radius:40%;
+        border:2px solid #000;
+        float:left;
+    }
+    .eye .righteye{
+        position:relative;
+        width:76px;height:87px;
+        background:#fff;
+        border-radius:40%;
+        border:2px solid #000;
+        float:left;
+        margin-left:-2px;
+    }
+    .leftcircle{
+        width:15px;
+        height:15px;
+        background:#333;
+        position:absolute;
+        bottom:18px;
+        right:10px;
+        border-radius:50%;
+    }
+    .rightcircle{
+        width:15px;
+        height:15px;
+        background:#333;
+        position:absolute;
+        bottom:18px;
+        left:10px;
+        border-radius:50%;
+    }
+    .nose{
+        width:32px;
+        height:32px;
+        background:radial-gradient(circle 7px at 23px 12px,#fff,#C93E00);
+        position:absolute;
+        left:0;top:0;right:0;bottom:0;
+        margin:48px auto;
+        border-radius:50%;
+        border:2px solid #333;
+        z-index:999;
+    }
+    .mustache{
+        width:240px;
+        height:120px;
+        /*background:red;*/
+        position:absolute;
+        left:0;bottom:0;right:0;top:0;
+        margin:48px auto;
+    }
+    .leftmustache{
+        width:70px;height:70px;
+        margin-top:10px;
+        position: relative;
+        margin-left: 4px;
+        float:left;
+        z-index:999;
+    }
+    .leftmustache .line{
+        width:50px;
+        height:2px;
+        background:#000;position:absolute;
+        left:0;top:0;right:0;bottom:0;margin:auto 12px;
+    }
+    .leftmustache .line:nth-child(1){
+        transform-origin:78px -14px;
+        transform:rotate(20deg);
+    }
+    .leftmustache .line:nth-child(2){
+        transform-origin:78px 14px;
+        transform:rotate(-20deg);
+    }
+    .rightmustache{
+        width:70px;height:70px;
+        margin-top:10px;
+        position: relative;
+        margin-right: 4px;
+        float:right;
+        transform:rotate(180deg);
+        z-index:999;
+    }
+    .rightmustache .line{
+        width:50px;
+        height:2px;
+        background:#000;position:absolute;
+        left:0;top:0;right:0;bottom:0;margin:auto 12px;
+    }
+    .rightmustache .line:nth-child(1){
+        transform-origin:78px -14px;
+        transform:rotate(20deg);
+    }
+    .rightmustache .line:nth-child(2){
+        transform-origin:78px 14px;
+        transform:rotate(-20deg);
+    }
+    .centermustache{
+        width:3px;
+        height:90px;
+        background:#333;
+        position:absolute;
+        left:0;top:0;right:0;bottom:0;margin:34px auto;
+        z-index:999;
+    }
+    .mouse{
+        width:200px;
+        height:200px;
+        border-bottom:3px solid #333;
+        border-radius:50%;
+        position:absolute;
+        left:0;top:0;right:0;bottom:0;margin:-79px auto;
+    }
+    .mousebox{
+        width:200px;
+        height:70px;
+        background:#fff;
+        margin-top:90px;
+    }
+    .body{
+        width:500px;height:224px;
+        position:relative;
+        left:0;right:0;bottom:0;top:0;
+        margin:-35px auto;
+    }
+    .neck{
+        width:234px;height:20px;
+        background:linear-gradient(#C43C00,#860900);
+        border:2px solid #333;
+        border-radius:15px;
+        position:absolute;
+        z-index:666;
+        left:0;right:0;bottom:0;top:0;
+        margin:0 auto;
+    }
+    .clothes{
+        width:224px;height:169px;
+        position:absolute;
+        left:0;right:0;bottom:0;top:0;
+        margin:13px auto;
+        background:linear-gradient(90deg,#0087AC,#07BBE8);
+        border:2px solid #333;
+        z-index:2;
+    }
+    .bag{
+        width:174px;
+        height:174px;
+        border:2px solid #333;
+        border-radius:50%;
+        background:#fff;
+        z-index:21;
+        position:absolute;
+        left:0;right:0;bottom:0;top:0;
+        margin:-20px auto;
+    }
+    .pocket{
+        width:135px;
+        height:135px;
+        background:#fff;
+        border:2px solid #333;
+        position:absolute;
+        left:0;right:0;bottom:0;top:0;
+        margin:auto;
+        border-radius:50%;
+    }
+    .pocketbox{
+        width:115px;
+        height:50px;
+        background:#fff;
+        position:absolute;
+        left:0;right:0;bottom:0;top:0;
+        margin:20px auto;
+    }
+    .clock{
+        width:139px;
+        height:50px;
+        background:#fff;
+        margin-top:15px;
+        border-bottom:2px solid #333;
+        margin-left:-2px;
+    }
+    .bell{
+        width:40px;
+        height:40px;
+        background:radial-gradient(ellipse 69px 46px at 26px 31px,#B7AF06,#F7EF28,#fff);
+        position:absolute;
+        left:0;right:0;bottom:0;top:0;
+        margin:8px auto;
+        border-radius:50%;
+        border:2px solid #333;
+    }
+    .bellline{
+        width:37px;
+        height:2px;
+        border:2px solid #333;
+        margin-top:10px;
+    }
+    .bellcircle{
+        width:12px;height:10px;
+        border-radius:5px;
+        background:#333;
+        margin-left:14px;
+        margin-top:5px;
+    }
+    .xiantiao{
+        width:3px;
+        height:10px;
+        background:#333;
+        margin-left:18px;
+    }
+    .left-arm{
+        width:100px;
+        height:100px;
+        margin-top:24px;
+        margin-left:40px;
+        float:left;
+    }
+    .leftarm{
+        width:80px;
+        height:50px;
+        background:#0083A6;
+        border:2px solid #333;
+        transform:rotate(-35deg);
+        margin-top:12px;
+        margin-left:42px;
+    }
+    .rightarm{
+        width:80px;
+        height:50px;
+        background:#07BEEA;
+        border:2px solid #333;
+        transform:rotate(35deg);
+        margin-left:-26px;
+        margin-top:12px;
+    }
+    .right-arm{
+        width:100px;
+        height:100px;
+        margin-top:24px;
+        margin-right:40px;
+        float:right;
+    }
+    .armline{
+        width:2px;
+        height:61px;
+        background:#0087AC;
+        margin-left:-2px;
+        float:left;
+    }
+    .armliney{
+        width:2px;
+        height:61px;
+        background:#07BBE8;
+        float:right;
+        margin-right:-2px;
+    }
+    .lefthand{
+        width:64px;
+        height:64px;
+        background:#fff;
+        border:2px solid #333;
+        margin-top:-30px;
+        position:absolute;
+        border-radius:46%;
+    }
+    .righthand{
+        width:64px;
+        height:64px;
+        background:#fff;
+        border:2px solid #333;
+        margin-top:-30px;
+        position:absolute;
+        border-radius:46%;
+        transform:translate(31px);
+    }
+    .footer{
+        width:280px;height:38px;
+        position:absolute;
+        bottom:0;left:0;right:0;top:0;
+        margin:184px auto;
+    }
+    .leftfooter{
+        width:129px;height:34px;
+        background:#fff;
+        float:left;
+        margin-left:4px;
+        border:2px solid #333;
+        border-radius:40px 25px 25px 15px;
+    }
+    .rightfooter{
+        width:129px;height:34px;
+        background:#fff;
+        float:right;
+        margin-right:4px;
+        border:2px solid #333;
+        border-radius:25px 40px 15px 25px;
+    }
+    .smallcircle{
+        width:22px;height:12px;
+        background:#DADADA;
+        position:absolute;
+        border-radius:15px 15px 0 0;
+        border:2px solid #333;
+        border-bottom:none;
+        left:0;top:0;bottom:0;right:0;
+        margin:172px auto;
+        z-index:888;
+    }
+</style>
+<body>
+    <div class="space">
+        <div class="head">
+            <div class="face">
+                <div class="eye">
+                    <div class="lefteye">
+                        <div class="leftcircle"></div>
+                    </div>
+                    <div class="righteye">
+                        <div class="rightcircle"></div>
+                    </div>
+                </div>
+                <div class="nose"></div>
+                <div class="mustache">
+                    <div class="leftmustache">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="rightmustache">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="centermustache"></div>
+                    <div class="mouse">
+                        <div class="mousebox"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            <div class="clothes">
+                <div class="armline"></div>
+                <div class="armliney"></div>
+            </div>
+            <div class="smallcircle"></div>
+            <div class="bag">
+                <div class="pocket">
+                    <div class="clock"></div>
+                </div>
+                <div class="pocketbox"></div>
+            </div>
+            <div class="neck">
+                <div class="bell">
+                    <div class="bellline"></div>
+                    <div class="bellcircle"></div>
+                    <div class="xiantiao"></div>
+                </div>
+            </div>
+            <div class="left-arm">
+                <div class="leftarm"></div>
+                <div class="lefthand"></div>
+            </div>
+            <div class="right-arm">
+                <div class="rightarm"></div>
+                <div class="righthand"></div>
+            </div>
+            <div class="footer">
+                <div class="leftfooter"></div>
+                <div class="rightfooter"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
